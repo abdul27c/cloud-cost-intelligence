@@ -1,0 +1,73 @@
+{
+  "source": "synthetic billing data and simulated change events",
+  "anomalies_investigated": 1,
+  "events_loaded": 4,
+  "investigations": [
+    {
+      "anomaly": {
+        "resource_id": "transfer-prod-out",
+        "date": "2026-10-07",
+        "baseline_daily_cost_usd": 4.96,
+        "observed_daily_cost_usd": 31.05,
+        "increase_usd": 26.09,
+        "increase_percent": 525.4,
+        "reason": "Daily cost was at least 3x its recent median."
+      },
+      "candidate_changes": [
+        {
+          "event_id": "EVT-001",
+          "change_id": "CHG-1042",
+          "event_time": "2026-10-07T09:00:00",
+          "resource_id": "transfer-prod-out",
+          "event_type": "infrastructure_change",
+          "description": "Outbound traffic routing configuration changed",
+          "days_from_anomaly": 0,
+          "same_resource": true,
+          "relevance_score": 90,
+          "assessment": "High-priority candidate",
+          "evidence": [
+            "Event affects the same resource as the anomaly.",
+            "Event occurred on the anomaly date."
+          ],
+          "causation_confirmed": false
+        },
+        {
+          "event_id": "EVT-003",
+          "change_id": "DEP-2082",
+          "event_time": "2026-10-07T11:30:00",
+          "resource_id": "lambda-prod-api",
+          "event_type": "deployment",
+          "description": "Production API function version deployed",
+          "days_from_anomaly": 0,
+          "same_resource": false,
+          "relevance_score": 30,
+          "assessment": "Same-day candidate; resource differs",
+          "evidence": [
+            "Event occurred on the anomaly date.",
+            "Resource does not match; this event is weaker evidence."
+          ],
+          "causation_confirmed": false
+        },
+        {
+          "event_id": "EVT-002",
+          "change_id": "DEP-2081",
+          "event_time": "2026-10-06T14:30:00",
+          "resource_id": "ec2-prod-web",
+          "event_type": "deployment",
+          "description": "Production web application version deployed",
+          "days_from_anomaly": 1,
+          "same_resource": false,
+          "relevance_score": 15,
+          "assessment": "Low-priority candidate",
+          "evidence": [
+            "Event occurred one calendar day from the anomaly.",
+            "Resource does not match; this event is weaker evidence."
+          ],
+          "causation_confirmed": false
+        }
+      ],
+      "conclusion": "Candidate changes are ranked by resource match and timing. These signals suggest what to investigate, but do not prove that a change caused the cost increase."
+    }
+  ],
+  "rejected_events": []
+}

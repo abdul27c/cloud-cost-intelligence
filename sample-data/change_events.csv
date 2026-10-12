@@ -1,0 +1,5 @@
+event_id,event_time,resource_id,event_type,change_id,description
+EVT-001,2026-10-07T09:00:00,transfer-prod-out,infrastructure_change,CHG-1042,Outbound traffic routing configuration changed
+EVT-002,2026-10-06T14:30:00,ec2-prod-web,deployment,DEP-2081,Production web application version deployed
+EVT-003,2026-10-07T11:30:00,lambda-prod-api,deployment,DEP-2082,Production API function version deployed
+EVT-004,2026-10-09T10:00:00,s3-prod-logs,configuration_change,CHG-1043,Log retention configuration reviewed
