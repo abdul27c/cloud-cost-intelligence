@@ -97,11 +97,11 @@ The project was developed and tested locally on macOS with Python 3.14.
 ### 1. Clone the repository
 
 ```bash
-git clone <YOUR_REPOSITORY_URL>
+git clone <https://github.com/abdul27c/cloud-cost-intelligence>
 cd cloud-cost-intelligence
 ```
 
-Replace `<YOUR_REPOSITORY_URL>` with your repository URL.
+
 
 ### 2. Set up Python
 
