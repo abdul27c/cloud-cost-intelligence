@@ -3,6 +3,7 @@ import json
 import subprocess
 import sys
 from pathlib import Path
+from fastapi.middleware.cors import CORSMiddleware
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -20,6 +21,17 @@ app = FastAPI(
     title="Cloud Cost Intelligence API",
     description="API for cloud spending analysis and anomaly investigation.",
     version="0.1.0",
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://cloud-cost-intelligence-7ets3ceva-abdul27c.vercel.app",
+        "http://localhost:5173",
+    ],
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 app.add_middleware(
